@@ -15,9 +15,13 @@ models through the [API-Finder](https://api-finder.com) REST API.
 
 ```text
 1. POST /v1/videos            → submit a job, get an id
-2. GET  /v1/videos/{id}       → poll status (~every 5s)
+2. GET  /v1/videos/{id}       → poll status (~every 5s): queued → in_progress → completed / failed
 3. GET  /v1/videos/{id}/content → download the finished video
 ```
+
+Submit body: `model` + `prompt` are required; `seconds` (default 5),
+`resolution` (default 720p) and `ratio` are optional — see the
+[official docs](https://api-finder.com/docs).
 
 Base URL: `https://api-finder.com` · Auth: `Authorization: Bearer sk-...`
 
@@ -44,9 +48,10 @@ Video — per-second lines (YH):
 | `seedance-2.0-mini-YH` | Seedance 2.0 Mini — cheapest 2.0 line |
 | `wan3-YH` | Wan 3.0 — cheapest overall |
 
-Video — official token-billed lines (261111): `seedance-2-5-261111`,
-`seedance-2-0-261111`, `seedance-2-0-fast-261111`, `seedance-2-0-mini-261111`
-(the 2.0 official line is the only one with 4K).
+Video — official token-billed lines (docs IDs, `doubao-` prefix):
+`doubao-seedance-2-5-261111`, `doubao-seedance-2-0-261111`,
+`doubao-seedance-2-0-fast-261111`, `doubao-seedance-2-0-mini-261111`
+(the 2.0 official line is the only one with 4K, and can generate audio).
 
 Image (per image): `gpt-image-2.5-flare`, `gpt-image-2.5-flare-02`,
 `gpt-image-2.5-sunburst`, `gpt-image-2.6-01` — via

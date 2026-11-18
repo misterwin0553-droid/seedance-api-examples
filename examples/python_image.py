@@ -15,8 +15,11 @@ BASE = "https://api-finder.com"
 KEY = os.environ["API_FINDER_KEY"]
 
 body = {
-    "model": "gpt-image-2.5-flare",  # ¥0.3313/image on the pricing page; check live rates
+    "model": "gpt-image-2.5-flare",  # per-image billing; check live rates on the pricing page
     "prompt": "Arabic oud perfume bottle product photo, dark background, gold particles",
+    "n": 1,
+    "size": "1024x1024",
+    "response_format": "b64_json",  # recommended; the sync call can take 35-65s, set timeouts >=150s
 }
 
 req = urllib.request.Request(

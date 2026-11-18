@@ -13,7 +13,7 @@ echo "Submitting job (model: $MODEL)..."
 RESP=$(curl -s -X POST "$BASE/v1/videos" \
   -H "Authorization: Bearer $API_FINDER_KEY" \
   -H "Content-Type: application/json" \
-  -d "{\"model\": \"$MODEL\", \"prompt\": \"$PROMPT\"}")
+  -d "{\"model\": \"$MODEL\", \"prompt\": \"$PROMPT\", \"seconds\": 5, \"resolution\": \"720p\", \"ratio\": \"16:9\"}")
 echo "$RESP"
 
 ID=$(echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('id') or d.get('task_id') or '')")

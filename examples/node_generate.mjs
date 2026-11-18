@@ -16,7 +16,7 @@ const job = await (
   await fetch(`${BASE}/v1/videos`, {
     method: "POST",
     headers,
-    body: JSON.stringify({ model: MODEL, prompt: PROMPT }),
+    body: JSON.stringify({ model: MODEL, prompt: PROMPT, seconds: 5, resolution: "720p", ratio: "16:9" }),
   })
 ).json();
 const id = job.id || job.task_id;

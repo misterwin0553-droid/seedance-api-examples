@@ -28,7 +28,7 @@ def call(method, path, body=None):
         return r.read()
 
 
-job = json.loads(call("POST", "/v1/videos", {"model": MODEL, "prompt": PROMPT}))
+job = json.loads(call("POST", "/v1/videos", {"model": MODEL, "prompt": PROMPT, "seconds": 5, "resolution": "720p", "ratio": "16:9"}))
 job_id = job.get("id") or job.get("task_id")
 print("Job submitted:", job_id)
 
